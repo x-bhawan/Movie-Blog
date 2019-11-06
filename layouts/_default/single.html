@@ -1,0 +1,35 @@
+{{ partial "header.html" . }}
+
+{{ partial "navigation.html" . }}
+
+<section class="section blog-single-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h1 class="post-title">{{ .Title }}</h1>
+            <!--    <ul class="list-inline mb-50 post-meta">
+                    <li class="list-inline-item">{{ .Params.author }}</li>
+                    <li class="list-inline-item">{{ .Params.category }}</li>
+                </ul>
+-->
+                {{ $image := string .Params.image }}
+
+                {{- $images := $.Resources.ByType "image" -}}
+                {{- $featured := $images.GetMatch $image -}}
+                {{- with $featured -}}
+                <img class="img-responsive" src="{{ $featured.Permalink }}" alt="{{ .Title }}">
+                {{ end }}
+
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="post-single-content">
+                    {{ .Content }}
+                </div>
+            </div>
+            <div class="commentbox"></div>
+        </div>
+    </div>
+</section>
+{{ partial "stars.html" . }}
+
+{{ partial "footer.html" . }}

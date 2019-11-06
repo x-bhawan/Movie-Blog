@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="description" content="{{if .IsHome}}{{ $.Site.Params.description }}{{else}}{{.Params.summary}}{{end}}">
+      <meta name="author" content="{{ $.Site.Params.author }}">
+      <link rel="apple-touch-icon" href="/images/appicon.png">
+      <link rel="icon" href="/images/appicon.png">
+      <meta name="google-site-verification" content="zwG1hR334YnpO88vUEdKYO2PDJsXuy-47dZaIKRMNvg" />
+      <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-30583055-1"></script>
+      <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-30583055-1', { 'optimize_id': 'GTM-T7DF7CW'});
+      </script>
+      {{ hugo.Generator }}
+
+      <title> {{ .Title }} </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+
+    {{ $owl := resources.Get "css/owl.carousel.css" }}
+    {{ $bs := resources.Get "css/bootstrap.min.css" }}
+    {{ $fa := resources.Get "css/font-awesome.min.css" }}
+    {{ $anim := resources.Get "css/animate.min.css" }}
+    {{ $main := resources.Get "css/main.css" }}
+    {{ $resp := resources.Get "css/responsive.css" }}
+    {{ $edit := resources.Get "css/edit.css" }}
+
+    {{ $style := slice $owl $bs $fa $anim $main $resp $edit | resources.Concat "css/bundle.css" | minify | fingerprint}}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" {{ printf "integrity=%q" $style.Data.Integrity | safeHTMLAttr }}>
+
+    {{ range .Site.Params.custom_css }}
+        <link rel="stylesheet" href="{{ . | absURL }}">
+        {{ end }}
+    {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
+      {{ template "_internal/google_analytics_async.html" . }}
+    {{ end }}
+    {{ partial "site-schema.html" . }}
+    {{ partial "twitter-card.html" . }}
+  </head>
+  <body>

@@ -1,0 +1,18 @@
+
+<meta name="twitter:card" content="{{- .Site.Params.twitter.card -}}">
+<meta name="twitter:site" content="{{- .Site.Params.twitter.site -}}">
+<meta name="twitter:creator" content="{{- .Site.Params.twitter.creator -}}">
+{{ if .IsHome -}}
+<meta name="twitter:title" content="{{- .Site.Params.twitter.title -}}">
+<meta name="twitter:image" content="{{- .Site.Params.twitter.image -}}">
+<meta name="twitter:description" content="{{ .Site.Params.twitter.description }}">
+{{- else if .IsPage -}}
+<meta name="twitter:title" content="{{ .Title }}">
+{{ $image := string .Params.image }}
+{{- $images := $.Resources.ByType "image" -}}
+{{- $featured := $images.GetMatch $image -}}
+{{- with $featured -}}
+<meta name="twitter:image" content="{{ $featured.Permalink }}">
+{{ end }}
+<meta name="twitter:description" content="{{ .Params.summary }}">
+{{ end }}

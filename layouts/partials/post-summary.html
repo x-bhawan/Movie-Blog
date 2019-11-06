@@ -1,0 +1,66 @@
+{{ if .Site.Params.about.enable }}
+<section id="about-us">
+    <div class="container">
+      {{ range first 2 (where .Pages "Section" "featured") }}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    {{ with .Resources.GetMatch .Params.image }}<img class="img-responsive" src="{{ .RelPermalink }}" alt="{{ .Title }}">{{ end }}
+                    <h1 class="heading wow fadeInUp" data-wow-duration="400ms" data-wow-delay="500ms" >
+                      <a href="{{ .Permalink }}">
+                          {{ .Title }}
+                      </a>
+                    </h1>
+                    <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="600ms">
+                        {{ .Summary }}
+                    </p>
+                    <a class="read-more" href="{{ .Permalink }}">
+                        Read more
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+        {{ range first 2 (where .Pages "Section" "opinion") }}
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="block">
+                      {{ with .Resources.GetMatch .Params.image }}<img class="img-responsive" src="{{ .RelPermalink }}" alt="{{ .Title }}">{{ end }}
+                      <h1 class="heading wow fadeInUp" data-wow-duration="400ms" data-wow-delay="500ms" >
+                        <a href="{{ .Permalink }}">
+                            {{ .Title }}
+                        </a>
+                      </h1>
+                      <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="600ms">
+                          {{ .Summary }}
+                      </p>
+                      <a class="read-more" href="{{ .Permalink }}">
+                          Read more
+                      </a>
+                  </div>
+              </div>
+          </div>
+          {{ end }}
+          {{ range first 2 (where .Pages "Section" "gossip") }}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        {{ with .Resources.GetMatch .Params.image }}<img class="img-responsive" src="{{ .RelPermalink }}" alt="{{ .Title }}">{{ end }}
+                        <h1 class="heading wow fadeInUp" data-wow-duration="400ms" data-wow-delay="500ms" >
+                          <a href="{{ .Permalink }}">
+                              {{ .Title }}
+                          </a>
+                        </h1>
+                        <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="600ms">
+                            {{ .Summary }}
+                        </p>
+                        <a class="read-more" href="{{ .Permalink }}">
+                            Read more
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+    </div>
+</section>
+{{end}}

@@ -1,0 +1,41 @@
+{{ if .Site.Params.blog.enable}}
+    <section id="blog" class="behind-the-scenes">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <h1 class="heading">{{ with .Site.Params.blog.title }} {{ . | safeHTML }} {{ end }}</h1>
+                        <h3 class="heading">{{ with .Site.Params.blog.subtitle }} {{ . | safeHTML }} {{ end }}</h3>
+                        <div class="masonry-layout">
+
+                            {{ range first 6 (where .Pages "Section" "behind-the-scenes") }}
+                            <div class="masonry-card">
+                            <div class="masonry-card-item pos-rel">
+                                <div class="blog-img">
+                                  <a href="{{ .Permalink }}">
+                                    {{ $image := .Param "image" }}
+                                    {{ with .Resources.GetMatch $image }}
+                                    {{ $image := (.Resize "500x281 box") }}
+
+                                    <img src="{{ $image.RelPermalink }}" alt="post-image" class="img-responsive">
+                                    {{ end }}
+                                  </a>
+                                </div>
+                                <div class="hover-play-icon">
+
+                                </div>
+                                <div class="bts-title">
+                                  <span>{{ .Title }}</span>
+                                </div>
+                            </div>
+                            </div>
+                             {{ end }}
+
+                         </div>
+                    </div>
+                </div><!-- .col-md-12 close -->
+            </div><!-- .row close -->
+        </div><!-- .containe close -->
+    </section><!-- #blog close -->
+
+{{end}}

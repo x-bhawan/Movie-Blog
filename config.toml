@@ -1,0 +1,148 @@
+baseURL = ""
+languageCode = "en-us"
+title = "Hugo Blog"
+description = "News, Views and Previews about all things Bollywood!"
+summaryLength = "7"
+
+enableRobotsTXT = true
+
+# Menu
+[menu]
+
+  [[menu.nav]]
+    name = "Featured"
+    URL = "featured/"
+    weight = 1
+
+    [[menu.nav]]
+    name = "Opinion"
+    URL = "opinion/"
+    weight = 2
+
+    [[menu.nav]]
+    name = "Behind the Scenes"
+    URL = "behind-the-scenes/"
+    weight = 3
+
+# Global Settings
+[params]
+logo = "images/logo.png"
+description = "News, Views and Previews about all things Bollywood!"
+
+[params.spuul]
+logo = "images/SpuulLogo.png"
+logoLarge = "images/SpuulLogo-large.png"
+url = "https://spuul.com"
+
+[params.heroArea]
+enable = true
+[params.heroImg ]
+url =  "images/header.jpg"
+
+[params.about]
+enable = true
+title = "Spuul Recommends"
+movieTitle = "Badrinath ki Dulhania"
+bgImage = "/images/spuul-recommends.jpg"
+description = "Badri, a wealthy man’s son, meets Vaidehi at a wedding and sparks fly between them. However, while he wants nothing more than to marry her, she yearns to pursue her dream of becoming an air hostess."
+RecLink = "https://spuul.com/videos/16881"
+
+#subscription
+
+[params.subscription]
+enable = true
+title = "Subscribe to our <span>Newsletter</span>"
+description = "Get the latest news, information & gossip!"
+
+#Mailchimp subscription configaration
+formAction = "https://spuul.us11.list-manage.com/subscribe/post?u=87bb608900441d7994804719a&amp;id=b7684f3731"
+formName = "b_87bb608900441d7994804719a_b7684f3731"
+
+#Contact
+
+[params.contact]
+enable = true
+title= "our <span> Contact Us </span>"
+subtitle= "SIGN UP FOR EMAIL ALERTS"
+description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+
+
+#Footer
+
+[params.footer]
+enable = true
+contactInfoTitle = "CONTACT <span>INFO</span> "
+blogTitle = "LATEST <span>POSTS</span>"
+galleryTitle = "PHOTO <span>STREAM</span>"
+socialTitle = "<span>Follow</span> us"
+
+[[params.footer.contactItem]]
+title="Telephone"
+icon = "fa fa-phone"
+content = "016742 323313"
+
+[[params.footer.contactItem]]
+title="Address"
+icon = "fa fa-map-marker"
+content = "2046 Blue Spruce Lane Laurel Canada"
+
+[[params.footer.contactItem]]
+title="E mail"
+icon = "fa fa-envelope"
+content = "rest@gmail.com - rest@mail.ru"
+
+[[params.footer.socialLink]]
+icon = "facebook"
+link = "https://www.facebook.com/spuul"
+
+
+[[params.footer.socialLink]]
+icon = "twitter"
+link = "https://twitter.com/Spuul"
+
+[[params.footer.socialLink]]
+icon = "pinterest"
+link = "https://pinterest.com/Spuul"
+
+[[params.footer.socialLink]]
+icon = "instagram"
+link = "https://www.instagram.com/spuul.movies/"
+
+
+#Footer Copyright
+
+#Footer Copyright Text
+[params.footerCopyright]
+enable = true
+Text = "Copyright 2019 - All Rights Reserved. Design and Developed By Spuul.com"
+
+
+[params.twitter]
+card = "summary_large_image"
+site = "@spuul"
+creator = "@spuul"
+title = "Spuul Blog"
+description = "News, Views and Previews about all things Bollywood!"
+
+#blog
+[params.blog]
+enable = true
+title = "Behind the Scenes"
+subtitle = "Watch the making of"
+bgImage = "/images/behind-the-scenes.jpg"
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[sitemap]
+  changefreq = "daily"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[blackfriday]
+hrefTargetBlank = true

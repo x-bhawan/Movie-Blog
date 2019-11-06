@@ -1,0 +1,32 @@
+{{ if .Site.Params.about.enable }}
+<section id="latest-posts">
+    <div class="container">
+      <div class="masonry-layout">
+
+      {{ range first 6 (after 3 (where .Pages "Section" "!=" "behind-the-scenes")) }}
+        <div class="row masonry-card wow fadeInUp" data-wow-duration="400ms" data-wow-delay="500ms" >
+            <div class="col-md-12 masonry-card-item">
+                <div class="block">
+                    <a href="{{ .Permalink }}">
+                      {{ $image := string .Params.image }}
+                      {{ with .Resources.GetMatch $image }}
+                        {{ $image := (.Fill "480x280 center") }}
+                        <img class="img-responsive" src="{{ $image.RelPermalink }}" alt="{{ .Title }}"></a>{{ end }}
+                    <h2 class="heading">
+                      <a href="{{ .Permalink }}">
+                          {{ .Title }}
+                      </a>
+                    </h2>
+                    <p>
+                        {{ .Params.Summary }}
+                    </p>
+                    <a class="read-more" href="{{ .Permalink }}">
+                        Read more
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{end}}

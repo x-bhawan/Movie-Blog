@@ -1,0 +1,17 @@
+{{ if .Site.Params.about.enable }}
+<section id="spuul-recommends">
+  <img class="" style="width:100%;" src="{{ .Site.Params.about.bgImage | absURL }}" alt="Banner" />
+  <div class="details-container details-right">
+    <h1 class="heading wow fadeInUp" data-wow-duration="400ms" data-wow-delay="500ms" >
+        {{ with .Site.Params.about.title }} {{ . | safeHTML }} {{ end }}
+    </h1>
+    <h2 class="heading wow fadeInUp" data-wow-duration="400ms" data-wow-delay="500ms" >
+        {{ with .Site.Params.about.movieTitle }} {{ . | safeHTML }} {{ end }}
+    </h2>
+    <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="600ms">
+        {{ with .Site.Params.about.description }} {{ . | safeHTML }} {{ end }}
+    </p>
+    <a class="read-more watch-now" href="{{ .Site.Params.about.RecLink }}">Watch Now</a>
+  </div>
+</section>
+{{end}}

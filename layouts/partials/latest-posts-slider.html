@@ -1,0 +1,46 @@
+
+<section id="slider">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+
+                    <div id="owl-example" class="owl-carousel">
+                        {{ range first 3 (where .Pages "Section" "!=" "behind-the-scenes") }}
+                          <div class="slide-container">
+                            <a href="{{ .Permalink }}">
+
+                              {{ $image := string .Params.image }}
+                              {{ with .Resources.GetMatch $image }}
+                              {{ $image := (.Fill "1140x580 center") }}
+                              {{ $image480 := (.Fill "450x250 center") }}
+
+
+                                <img class="img-responsive"
+                                srcset="{{ $image480.RelPermalink }} 480w,
+                                 {{ $image.RelPermalink }} 990w"
+                                sizes="(max-width: 480px) 480px,
+                                990px"
+                                src="{{ $image.RelPermalink }}" alt="">
+
+                                {{ end }}
+                            </a>
+                            <div class="slider-detail-box">
+                              <a href="{{ .Permalink }}">
+                                <h2>  {{ .Title }} </h2>
+                              </a>
+                              <p class="slider-item-detail">
+                                <span class="featured-category">{{ .Params.category }}</span> - <span class="featured-date">{{ .Date.Format "02-01-2006" }}</span>
+                              </p>
+                              <p class="slider-item-summary">
+                                {{ .Summary }}
+                              </p>
+                            </div>
+                          </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div><!-- .col-md-12 close -->
+        </div><!-- .row close -->
+    </div><!-- .container close -->
+</section><!-- slider close -->

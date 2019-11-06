@@ -1,0 +1,52 @@
+{{ if .IsHome -}}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "url": "{{ .Site.BaseURL }}",
+    {{ if .Site.Params.description -}}
+    "description": "{{ .Site.Params.description }}",
+    {{- end }}
+    {{ if .Site.Params.logo -}}
+    "thumbnailUrl": "{{ .Site.Params.logo }}",
+    {{- end }}
+    "name": "{{ .Site.Title }}",
+    "author": "Spuul",
+    "publisher": "Spuul",
+    "keywords": "Bollywood news, Bollywood gossips, Movies list, Actors, Actresses"
+  }
+  </script>
+  {{- else if .IsPage -}}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ .Title }}",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ .Permalink }}"
+      },
+      {{ $image := string .Params.image }}
+      {{- $images := $.Resources.ByType "image" -}}
+      {{- $featured := $images.GetMatch $image -}}
+      {{- with $featured -}}
+      "thumbnailUrl": "{{  $featured.Permalink }}",
+      {{ end }}
+      {{ if .Params.summary -}}
+      "description": "{{ .Params.summary }}",
+      {{- end}}
+      "url": "{{ .Permalink }}",
+      "author": "Spuul",
+      "publisher": "Spuul",
+      "wordcount": {{ .WordCount }},
+      "datePublished": "{{ .Date.Format "2006-01-02" }}",
+      "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+      {{ $image := string .Params.image }}
+      {{- $images := $.Resources.ByType "image" -}}
+      {{- $featured := $images.GetMatch $image -}}
+      {{- with $featured -}}
+      "image": "{{  $featured.Permalink }}",
+      {{ end }}
+    }
+  </script>
+  {{- end }}
